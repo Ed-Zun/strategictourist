@@ -1,103 +1,594 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ed as in Education</title>
-    </head>
-    <body>
-        <canvas id="bg"></canvas>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Strategic Tourist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <main>
-            <header>
-                <h1>Edgard Zuniga</h1>
-                <p>🚀 Let's Go!</p>
-            </header>
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-light: #8a8a84;
+    --paper: #f5f3ee;
+    --paper-warm: #ede9e0;
+    --rule: #c8c4ba;
+    --accent: #2a3d2e;
+    --accent-light: #e6ede7;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
 
-            <blockquote>
-                <p>Digital Paper Architect?</p>
-            </blockquote>
+  html { scroll-behavior: smooth; }
 
-            <section>
-                <h2>📜 Manifesto</h2>
-                <p>
-                    A transdisciplinary mobility coordinator at the intersection
-                    of space, people, and movement, with experience in station
-                    design, data analysis and procurement.
-                </p>
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
 
-                <p>
-                    A pupil of the Dutch train station, I advocate for the
-                    development of multimodal transport networks and the
-                    prioritisation of the architectural experience of
-                    infrastructure.
-                </p>
-            </section>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
 
-            <section class="light">
-                <h2>👩🏽‍🚀 Projects</h2>
+  .nav-wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
 
-                <p>These should be links, hyperlinks</p>
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
 
-                <h2>🏆 Accomplishments</h2>
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
 
-                <p>TBA</p>
-            </section>
+  .nav-links a:hover { color: var(--ink); }
 
-            <blockquote>
-                <p>The best way out is always through <br />-Robert Frost</p>
-            </blockquote>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 52px);
+    border-bottom: 0.5px solid var(--rule);
+  }
 
-            <section class="left">
-                <h2>🎓 Education</h2>
+  .hero-left {
+    padding: 5rem 3rem 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 0.5px solid var(--rule);
+  }
 
-                <h3>Technische Universiteit Delft</h3>
-                <h4>MSc Transport, Infrastructure & Logistics</h4>
-                <h5>Specialisation: Transport Policy</h5>
-                <h6>September 2015 – December 2024</h6>
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 2rem;
+  }
 
-                <p>
-                    Thesis: Bicycle-Train Floor Circulation - Analysing the
-                    floor between enclosed bicycle parking facilities and train
-                    platforms at Dutch train stations according to its spatial
-                    composition.
-                </p>
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+  }
 
-                <h3>Kun Shan University (崑山科技大學)</h3>
-                <h4>BSc Mechanical Engineering</h4>
-                <h6>August 2009 – July 2013</h6>
-            </section>
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
 
-            <section class="left">
-                <h2>🧑‍🔧 Work History</h2>
+  .hero-body {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 3rem;
+  }
 
-                <h3>TU Delft</h3>
-                <h4>Data Analyst</h4>
-                <h5>March 2019 – December 2020</h5>
-                <p>
-                    ▪ Analyse data from the Municipality of Amsterdam’s
-                    Noord-Zuidlijn Impact Survey 2018 – 2019 results: Developed
-                    a Python package to clean, translate, analyse and visualise
-                    results for 5,000 30 open-ended question surveys.
-                </p>
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
 
-                <h3>SINTER S.A.</h3>
-                <h4>Medical Equipment Sales Manager</h4>
-                <h5>March 2014 – May 2015</h5>
-                <p>
-                    ▪ Responsible for sales to the private and public sectors.
-                    Represented Sinter S.A. in public tender processes with the
-                    Ministry of Health of Nicaragua for medical equipment
-                    nationwide.
-                </p>
-            </section>
+  .hero-cta:hover { opacity: 0.65; }
 
-            <blockquote>
-                <p>Neat, huh?!</p>
-            </blockquote>
-        </main>
+  .hero-right {
+    background: var(--accent);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-        <script type="module" src="/main.js"></script>
-    </body>
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .axon-svg {
+    position: relative;
+    z-index: 2;
+    width: 72%;
+    max-width: 340px;
+    opacity: 0.9;
+  }
+
+  .hero-index {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+
+  section {
+    padding: 5rem 3rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 3rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-body {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.85;
+  }
+
+  .rule-list {
+    list-style: none;
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .rule-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    font-size: 14px;
+    color: var(--ink-mid);
+  }
+
+  .rule-list .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-light);
+    flex-shrink: 0;
+    width: 20px;
+  }
+
+  .product-section {
+    background: var(--paper-warm);
+  }
+
+  .product-inner {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .product-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 10px;
+    margin-bottom: 1.2rem;
+  }
+
+  .product-name {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .product-body {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+
+  .product-diagram {
+    background: var(--ink);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-diagram-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .layer-stack {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .layer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    border: 0.5px solid;
+  }
+
+  .layer-dso { border-color: rgba(166,210,170,0.5); background: rgba(166,210,170,0.08); }
+  .layer-model { border-color: rgba(200,196,186,0.4); background: rgba(200,196,186,0.06); }
+  .layer-permits { border-color: rgba(255,200,100,0.4); background: rgba(255,200,100,0.06); }
+  .layer-base { border-color: rgba(150,180,220,0.4); background: rgba(150,180,220,0.08); }
+
+  .layer-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-green { background: #a6d2aa; }
+  .dot-gray  { background: #c8c4ba; }
+  .dot-amber { background: #ffc864; }
+  .dot-blue  { background: #96b4dc; }
+
+  .layer-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .layer-dso .layer-label    { color: #a6d2aa; }
+  .layer-model .layer-label  { color: #c8c4ba; }
+  .layer-permits .layer-label{ color: #ffc864; }
+  .layer-base .layer-label   { color: #96b4dc; }
+
+  .layer-desc {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+    margin-left: auto;
+  }
+
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .contact-left {
+    padding: 5rem 3rem;
+    border-right: 0.5px solid var(--rule);
+  }
+
+  .contact-right {
+    padding: 5rem 3rem;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .contact-body {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--accent);
+    padding-bottom: 1px;
+  }
+
+  .detail-list { list-style: none; }
+
+  .detail-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+  }
+
+  .detail-list .key {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding-top: 2px;
+  }
+
+  .detail-list .val {
+    color: rgba(255,255,255,0.85);
+    text-align: right;
+  }
+
+  footer {
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-word {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-label { animation: fadeUp 0.7s ease 0.10s both; }
+  .hero-title { animation: fadeUp 0.7s ease 0.22s both; }
+  .hero-body  { animation: fadeUp 0.7s ease 0.34s both; }
+  .hero-cta   { animation: fadeUp 0.7s ease 0.46s both; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { min-height: 320px; }
+    .hero-left { border-right: none; border-bottom: 0.5px solid var(--rule); padding: 3rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .product-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-section { grid-template-columns: 1fr; }
+    .contact-left { border-right: none; border-bottom: 0.5px solid var(--rule); padding: 3rem 1.5rem; }
+    .contact-right { padding: 3rem 1.5rem; }
+    section { padding: 3rem 1.5rem; }
+    nav { padding: 0 1.5rem; }
+    footer { padding: 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-wordmark">Strategic Tourist</a>
+  <ul class="nav-links">
+    <li><a href="#about">Practice</a></li>
+    <li><a href="#product">Permit Twin</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <p class="hero-label">Spatial Analysis Practice — The Hague, NL</p>
+      <h1 class="hero-title">Understanding space<br>before <em>development</em><br>begins.</h1>
+      <p class="hero-body">
+        Strategic Tourist helps public and private entities understand their built environment through interactive 3D models enriched with live data — creating a common data environment for better-informed design decisions.
+      </p>
+      <a href="#product" class="hero-cta">See the Permit Twin &rarr;</a>
+    </div>
+    <div style="margin-top:3rem">
+      <p style="font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-light);">strategictourist.nl</p>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="grid-overlay"></div>
+    <svg class="axon-svg" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.85">
+        <polygon points="150,220 40,165 150,110 260,165" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+        <polygon points="150,220 40,165 150,110 260,165" fill="rgba(255,255,255,0.03)"/>
+        <polygon points="40,165 40,105 150,50 150,110" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+        <polygon points="260,165 260,105 150,50 150,110" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)" stroke-width="0.8"/>
+        <polygon points="150,50 40,105 150,110 260,105" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+        <line x1="95" y1="137" x2="95" y2="77" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="40" y1="135" x2="150" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="205" y1="137" x2="205" y2="77" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <line x1="260" y1="135" x2="150" y2="80" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+        <circle cx="95" cy="107" r="3" fill="#a6d2aa" opacity="0.9"/>
+        <line x1="95" y1="107" x2="138" y2="86" stroke="#a6d2aa" stroke-width="0.6" opacity="0.6"/>
+        <rect x="138" y="78" width="52" height="14" rx="2" fill="rgba(166,210,170,0.15)" stroke="#a6d2aa" stroke-width="0.5" opacity="0.8"/>
+        <text x="164" y="88" text-anchor="middle" font-family="monospace" font-size="6" fill="#a6d2aa" opacity="0.9">DSO permit zone</text>
+        <circle cx="205" cy="130" r="3" fill="#ffc864" opacity="0.9"/>
+        <line x1="205" y1="130" x2="228" y2="118" stroke="#ffc864" stroke-width="0.6" opacity="0.6"/>
+        <rect x="228" y="111" width="44" height="14" rx="2" fill="rgba(255,200,100,0.1)" stroke="#ffc864" stroke-width="0.5" opacity="0.8"/>
+        <text x="250" y="121" text-anchor="middle" font-family="monospace" font-size="6" fill="#ffc864" opacity="0.9">use class B1</text>
+        <circle cx="150" cy="160" r="3" fill="#96b4dc" opacity="0.9"/>
+        <line x1="150" y1="160" x2="112" y2="175" stroke="#96b4dc" stroke-width="0.6" opacity="0.6"/>
+        <rect x="62" y="169" width="50" height="14" rx="2" fill="rgba(150,180,220,0.1)" stroke="#96b4dc" stroke-width="0.5" opacity="0.8"/>
+        <text x="87" y="179" text-anchor="middle" font-family="monospace" font-size="6" fill="#96b4dc" opacity="0.9">footprint ref</text>
+        <line x1="150" y1="50" x2="150" y2="110" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-dasharray="3,3"/>
+      </g>
+    </svg>
+    <p class="hero-index">Fig. 01 — Permit Twin model concept</p>
+  </div>
+</section>
+
+<section id="about">
+  <p class="section-label">01 — The Practice</p>
+  <div class="about-grid">
+    <div>
+      <h2 class="about-heading">A spatial analysis practice for the built environment.</h2>
+      <p class="about-body">
+        Strategic Tourist is a spatial analysis practice that helps public and private entities understand their built environment before development begins. Using contemporary 3D modelling technologies, we generate interactive models enriched with data from relevant databases, creating a common data environment where all spatial, regulatory, and contextual information is visible in one place, enabling better-informed design decisions and a shared visual logic that all stakeholders can interact with.
+      </p>
+    </div>
+    <div>
+      <ul class="rule-list">
+        <li><span class="num">01</span> 3D models enriched with live regulatory and spatial databases</li>
+        <li><span class="num">02</span> Common data environments accessible to all project stakeholders</li>
+        <li><span class="num">03</span> Visual logic that bridges technical and non-technical decision makers</li>
+        <li><span class="num">04</span> Pre-development spatial intelligence for public and private entities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="product" class="product-section">
+  <p class="section-label">02 — First Product</p>
+  <div class="product-inner">
+    <div>
+      <span class="product-tag">In development</span>
+      <h2 class="product-name">The Permit Twin</h2>
+      <p class="product-body">
+        A baseline 3D model of an existing property that serves as the foundational reference for any proposed modifications. Design service providers build on top of it, and it functions as the digital constant throughout the permit process.
+      </p>
+    </div>
+    <div class="product-diagram">
+      <div class="product-diagram-grid"></div>
+      <div class="layer-stack">
+        <div class="layer layer-dso">
+          <div class="layer-dot dot-green"></div>
+          <span class="layer-label">DSO regulation layer</span>
+          <span class="layer-desc">live · omgevingswet</span>
+        </div>
+        <div class="layer layer-permits">
+          <div class="layer-dot dot-amber"></div>
+          <span class="layer-label">Permit guardrails</span>
+          <span class="layer-desc">zoning · use class</span>
+        </div>
+        <div class="layer layer-model">
+          <div class="layer-dot dot-gray"></div>
+          <span class="layer-label">Design proposals</span>
+          <span class="layer-desc">service providers</span>
+        </div>
+        <div class="layer layer-base" style="margin-top:6px;border-style:dashed;">
+          <div class="layer-dot dot-blue"></div>
+          <span class="layer-label">Baseline model — constant</span>
+          <span class="layer-desc">existing building</span>
+        </div>
+      </div>
+      <p style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;margin-top:1.2rem;position:relative;z-index:2;">Fig. 02 — Permit Twin layer architecture</p>
+    </div>
+  </div>
+</section>
+
+<div class="contact-section" id="contact">
+  <div class="contact-left">
+    <p class="section-label">03 — Contact</p>
+    <h2 class="contact-heading">Get in touch.</h2>
+    <p class="contact-body">Strategic Tourist is based in The Hague, Netherlands. We work with public bodies, developers, and design service providers.</p>
+    <a href="mailto:hello@strategictourist.nl" class="contact-link">hello@strategictourist.nl</a>
+  </div>
+  <div class="contact-right">
+    <ul class="detail-list">
+      <li><span class="key">Entity</span><span class="val">Strategic Tourist</span></li>
+      <li><span class="key">Type</span><span class="val">Spatial analysis practice</span></li>
+      <li><span class="key">Location</span><span class="val">The Hague, NL</span></li>
+      <li><span class="key">Registration</span><span class="val">KvK — Netherlands</span></li>
+      <li><span class="key">Website</span><span class="val">strategictourist.nl</span></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-word">Strategic Tourist — The Hague</span>
+  <span class="footer-word">&copy; 2026</span>
+</footer>
+
+</body>
 </html>
